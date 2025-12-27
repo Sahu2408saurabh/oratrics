@@ -1,4 +1,4 @@
-/* ===== GLOBAL RESET ===== */
+/* ===== RESET ===== */
 * {
   margin: 0;
   padding: 0;
@@ -8,15 +8,14 @@
 
 /* ===== NAVBAR ===== */
 .navbar {
-  width: 100%;
   position: fixed;
   top: 0;
+  width: 100%;
   background: #f8f9fb;
   z-index: 1000;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
 }
 
-/* ===== CONTAINER ===== */
 .nav-container {
   max-width: 1280px;
   margin: auto;
@@ -26,7 +25,6 @@
   justify-content: space-between;
 }
 
-/* ===== LOGO ===== */
 .logo img {
   height: 42px;
 }
@@ -38,76 +36,149 @@
   gap: 26px;
 }
 
-.nav-links a {
-  text-decoration: none;
+.nav-links a,
+.dropdown-title {
   color: #000;
   font-size: 15px;
   font-weight: 500;
-  transition: color 0.3s ease;
+  cursor: pointer;
+  text-decoration: none;
 }
 
-.nav-links a:hover {
-  color: #8b0000; /* mehroon */
+.nav-links a:hover,
+.dropdown-title:hover {
+  color: #8b0000;
 }
 
-/* ===== LOGIN BUTTON ===== */
-.login-btn button {
-  background: #8b0000;
-  color: #fff;
-  border: none;
-  padding: 9px 18px;
+/* ===== DROPDOWN ===== */
+.dropdown {
+  position: relative;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 36px;
+  left: 0;
+  width: 260px;
+  background: #fff;
+  border-radius: 6px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+  padding: 10px 0;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition: 0.25s ease;
+}
+
+.dropdown-menu a {
+  display: block;
+  padding: 10px 16px;
+  font-size: 14px;
+  color: #333;
+}
+
+.dropdown-menu a:hover {
+  background: #f1f1f1;
+  color: #8b0000;
+}
+
+@media (min-width: 993px) {
+  .dropdown:hover .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+}
+
+/* ===== BUTTONS ===== */
+.executive-btn {
+  background: transparent;
+  border: 1.5px solid #050A30;
+  color: #050A30;
+  padding: 8px 18px;
   border-radius: 6px;
   font-size: 14px;
   cursor: pointer;
+}
+
+.executive-btn:hover {
+  background: #050A30;
+  color: #fff;
+}
+
+.login-btn-red {
+  background: #8b0000;
+  color: #fff;
+  border: none;
+  padding: 8px 18px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+/* ===== DESKTOP ACTIONS ===== */
+.nav-actions {
   display: flex;
-  align-items: center;
-  gap: 6px;
+  gap: 14px;
 }
 
-.login-btn button:hover {
-  background: #6f0000;
+.login-menu {
+  right: 0;
+  left: auto;
+  width: 180px;
 }
 
-.user-icon {
-  font-size: 14px;
+/* ===== MOBILE ACTIONS ===== */
+.mobile-actions {
+  display: none;
+  flex-direction: column;
+  gap: 12px;
+  padding: 16px;
+  width: 100%;
 }
 
-/* ===== PREMIUM FRIES HAMBURGER ===== */
+/* 🔑 FULL WIDTH + CENTER TEXT */
+.mobile-btn {
+  width: 100%;
+  text-align: center;   /* ✅ CENTER TEXT */
+}
+
+/* LOGIN OPTIONS */
+.mobile-login-options {
+  background: #f3f3f3;
+  border-radius: 6px;
+}
+
+.mobile-login-options a {
+  display: block;
+  padding: 12px 16px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+  text-decoration: none;
+  color: #333;
+}
+
+/* ===== HAMBURGER ===== */
 .hamburger {
   display: none;
   width: 36px;
   height: 28px;
-  cursor: pointer;
   position: relative;
-  margin-left: 20px;    /* spacing from menu */
-  margin-right: 12px;   /* right edge spacing */
+  cursor: pointer;
 }
 
 .hamburger span {
   position: absolute;
   width: 100%;
   height: 5px;
-  background-color: #1f2f46;  /* dark premium color */
+  background: #1f2f46;
   border-radius: 20px;
-  left: 0;
-  transition: all 0.35s ease;
+  transition: 0.35s;
 }
 
-/* spacing like fries image */
-.hamburger span:nth-child(1) {
-  top: 0;
-}
+.hamburger span:nth-child(1) { top: 0; }
+.hamburger span:nth-child(2) { top: 11px; width: 70%; }
+.hamburger span:nth-child(3) { bottom: 0; }
 
-.hamburger span:nth-child(2) {
-  top: 11px;
-  width: 70%;   /* middle line shorter */
-}
-
-.hamburger span:nth-child(3) {
-  bottom: 0;
-}
-
-/* ===== ACTIVE STATE (CROSS) ===== */
 .hamburger.active span:nth-child(1) {
   transform: rotate(45deg);
   top: 11px;
@@ -129,23 +200,37 @@
     top: 70px;
     left: 0;
     width: 100%;
-    background: #ffffff;
+    background: #fff;
     flex-direction: column;
-    gap: 18px;
-    padding: 22px 0;
+    align-items: flex-start;
     display: none;
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.12);
+
+       padding: 16px 22px;
   }
 
   .nav-links.open {
     display: flex;
   }
 
-  .login-btn {
+  .nav-actions {
     display: none;
+  }
+
+  .mobile-actions {
+    display: flex;
   }
 
   .hamburger {
     display: block;
+  }
+
+  .dropdown.mobile-open .dropdown-menu {
+    position: static;
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+    width: 100%;
+    box-shadow: none;
+    border-top: 1px solid #eee;
   }
 }
