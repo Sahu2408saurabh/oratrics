@@ -16,6 +16,7 @@
   box-shadow: 0 2px 8px rgba(0,0,0,0.08);
 }
 
+/* ===== CONTAINER ===== */
 .nav-container {
   max-width: 1280px;
   margin: auto;
@@ -25,6 +26,7 @@
   justify-content: space-between;
 }
 
+/* ===== LOGO ===== */
 .logo img {
   height: 42px;
 }
@@ -68,6 +70,7 @@
   visibility: hidden;
   transform: translateY(10px);
   transition: 0.25s ease;
+  z-index: 2000;
 }
 
 .dropdown-menu a {
@@ -82,6 +85,7 @@
   color: #8b0000;
 }
 
+/* DESKTOP HOVER */
 @media (min-width: 993px) {
   .dropdown:hover .dropdown-menu {
     opacity: 1;
@@ -97,7 +101,6 @@
   color: #050A30;
   padding: 8px 18px;
   border-radius: 6px;
-  font-size: 14px;
   cursor: pointer;
 }
 
@@ -115,46 +118,26 @@
   cursor: pointer;
 }
 
+/* ===== CARET ICON (BIGGER, SAFE) ===== */
+.caret {
+  display: inline-block;
+  font-size: 18px;          /* 🔥 icon bigger */
+  line-height: 1;
+  margin-left: 4px;
+  transform: translateY(1px); /* alignment same */
+}
+
 /* ===== DESKTOP ACTIONS ===== */
 .nav-actions {
   display: flex;
   gap: 14px;
 }
 
-.login-menu {
-  right: 0;
-  left: auto;
-  width: 180px;
-}
-
-/* ===== MOBILE ACTIONS ===== */
-.mobile-actions {
-  display: none;
-  flex-direction: column;
-  gap: 12px;
-  padding: 16px;
-  width: 100%;
-}
-
-/* 🔑 FULL WIDTH + CENTER TEXT */
-.mobile-btn {
-  width: 100%;
-  text-align: center;   /* ✅ CENTER TEXT */
-}
-
-/* LOGIN OPTIONS */
-.mobile-login-options {
-  background: #f3f3f3;
-  border-radius: 6px;
-}
-
-.mobile-login-options a {
-  display: block;
-  padding: 12px 16px;
-  text-align: left;
-  border-bottom: 1px solid #ddd;
-  text-decoration: none;
-  color: #333;
+/* DESKTOP: HIDE MOBILE BUTTONS */
+@media (min-width: 993px) {
+  .mobile-actions {
+    display: none;
+  }
 }
 
 /* ===== HAMBURGER ===== */
@@ -193,8 +176,9 @@
   bottom: 11px;
 }
 
-/* ===== RESPONSIVE ===== */
+/* ================= MOBILE ================= */
 @media (max-width: 992px) {
+
   .nav-links {
     position: absolute;
     top: 70px;
@@ -203,27 +187,49 @@
     background: #fff;
     flex-direction: column;
     align-items: flex-start;
+    padding: 16px 22px;
     display: none;
-
-       padding: 16px 22px;
   }
 
   .nav-links.open {
     display: flex;
   }
 
+  /* HIDE DESKTOP BUTTONS */
   .nav-actions {
     display: none;
   }
 
+  /* SHOW MOBILE BUTTONS */
   .mobile-actions {
     display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
   }
 
-  .hamburger {
+  .mobile-btn {
+    width: 100%;
+    min-height: 48px;
+    text-align: center;
+    font-size: 15px;
+  }
+
+  .mobile-login-options {
+    width: 100%;
+    background: #f3f3f3;
+    border-radius: 6px;
+  }
+
+  .mobile-login-options a {
     display: block;
+    padding: 14px 16px;
+    border-bottom: 1px solid #ddd;
+    text-decoration: none;
+    color: #333;
   }
 
+  /* MOBILE PROGRAM DROPDOWN */
   .dropdown.mobile-open .dropdown-menu {
     position: static;
     opacity: 1;
@@ -232,5 +238,10 @@
     width: 100%;
     box-shadow: none;
     border-top: 1px solid #eee;
+  }
+
+  /* SHOW HAMBURGER */
+  .hamburger {
+    display: block;
   }
 }

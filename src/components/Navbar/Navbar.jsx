@@ -17,7 +17,6 @@ const Navbar = () => {
 
         {/* NAV LINKS */}
         <nav className={`nav-links ${menuOpen ? "open" : ""}`}>
-
           <a href="/">Home</a>
           <a href="/about">About Us</a>
 
@@ -27,7 +26,7 @@ const Navbar = () => {
               className="dropdown-title"
               onClick={() => setProgramOpen(!programOpen)}
             >
-              Programs ▾
+              Programs <span className="caret">▾</span>
             </span>
 
             <div className="dropdown-menu">
@@ -43,7 +42,7 @@ const Navbar = () => {
           <a href="/blog">Blog & Stories</a>
           <a href="/career">Career</a>
 
-          {/* ===== MOBILE ACTIONS ===== */}
+          {/* ===== MOBILE BUTTONS ===== */}
           <div className="mobile-actions">
             <button className="executive-btn mobile-btn">
               Oratrics Executive
@@ -53,7 +52,7 @@ const Navbar = () => {
               className="login-btn-red mobile-btn"
               onClick={() => setLoginOpen(!loginOpen)}
             >
-              Login ▾
+              Login <span className="caret">▾</span>
             </button>
 
             {loginOpen && (
@@ -63,10 +62,9 @@ const Navbar = () => {
               </div>
             )}
           </div>
-
         </nav>
 
-        {/* ===== DESKTOP ACTIONS ===== */}
+        {/* ===== DESKTOP BUTTONS ===== */}
         <div className="nav-actions">
           <button className="executive-btn">
             Oratrics Executive
@@ -74,12 +72,13 @@ const Navbar = () => {
 
           <div className="dropdown">
             <button className="login-btn-red">
-              Login ▾
+              Login <span className="caret">▾</span>
             </button>
 
             <div className="dropdown-menu login-menu">
-              <a href="/parent-login">Parent Login</a>
               <a href="/student-login">Student Login</a>
+              <a href="/parent-login">Parent Login</a>
+              
             </div>
           </div>
         </div>
