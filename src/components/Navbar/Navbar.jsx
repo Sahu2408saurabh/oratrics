@@ -1,16 +1,15 @@
 import { useState, useRef, useEffect } from "react";
-import { NavLink } from "react-router-dom";
 import "./Navbar.css";
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [programOpen, setProgramOpen] = useState(false);
   const [loginOpen, setLoginOpen] = useState(false);
+  const [activeMenu, setActiveMenu] = useState("");
 
   const programRef = useRef(null);
   const loginRef = useRef(null);
 
-  
   useEffect(() => {
     const handleClickOutside = (e) => {
       if (programRef.current && !programRef.current.contains(e.target)) {
@@ -20,134 +19,186 @@ const Navbar = () => {
         setLoginOpen(false);
       }
     };
+
     document.addEventListener("mousedown", handleClickOutside);
-    return () => document.removeEventListener("mousedown", handleClickOutside);
+    return () =>
+      document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
-  const activeClassName = "active";
+  const isActive = (menu) => (activeMenu === menu ? "active" : "");
 
   return (
     <header className="navbar">
       <div className="nav-container">
-
-        
-
-
+        {/* LOGO */}
         <div className="logo">
-          <NavLink to="/">
+          <a href="/" onClick={() => setActiveMenu("home")}>
             <img src="/logo.png" alt="Oratrics Logo" />
-          </NavLink>
+          </a>
         </div>
 
-        
-
-
+        {/* NAV LINKS */}
         <nav className={`nav-links ${menuOpen ? "open" : ""}`}>
-
-          <NavLink
-            to="/"
-            className={({ isActive }) => (isActive ? activeClassName : "")}
-            onClick={() => setMenuOpen(false)}
+          <a
+            href="/"
+            className={isActive("home")}
+            onClick={() => {
+              setActiveMenu("home");
+              setMenuOpen(false);
+            }}
           >
             Home
-          </NavLink>
+          </a>
 
-          <NavLink
-            to="/about_us"
-            className={({ isActive }) => (isActive ? activeClassName : "")}
-            onClick={() => setMenuOpen(false)}
+          <a
+            href="/about_us"
+            className={isActive("about_us")}
+            onClick={() => {
+              setActiveMenu("about_us");
+              setMenuOpen(false);
+            }}
           >
             About Us
-          </NavLink>
+          </a>
 
-          
-
-
-
+          {/* PROGRAMS DROPDOWN */}
           <div
             ref={programRef}
             className={`dropdown ${programOpen ? "open" : ""}`}
           >
             <span
-              className="dropdown-title"
-              onClick={() => setProgramOpen(!programOpen)}
+              className={`dropdown-title ${isActive("programs")}`}
+              onClick={() => {
+                setProgramOpen(!programOpen);
+                setActiveMenu("programs");
+              }}
             >
               Programs <span className="caret">▾</span>
             </span>
 
-            <div className="dropdown-menu">
-              <NavLink to="/math" onClick={() => setProgramOpen(false)}>
+            <div className="dropdown-menu programs-dropdown">
+              <a href="/math" onClick={() => setProgramOpen(false)}>
+                <span className="program-icon">📐</span>
                 Oratrics Math Explorers
-              </NavLink>
-              <NavLink to="/personality_enrichment" onClick={() => setProgramOpen(false)}>
+              </a>
+
+              <a
+                href="/personality_enrichment"
+                onClick={() => setProgramOpen(false)}
+              >
+                <span className="program-icon">🧠</span>
                 Personality Enrichment
-              </NavLink>
-              <NavLink to="/public_speaking" onClick={() => setProgramOpen(false)}>
+              </a>
+
+              <a
+                href="/public_speaking"
+                onClick={() => setProgramOpen(false)}
+              >
+                <span className="program-icon">🎤</span>
                 Public Speaking
-              </NavLink>
-              <NavLink to="/creative_writing" onClick={() => setProgramOpen(false)}>
+              </a>
+
+              <a
+                href="/creative_writing"
+                onClick={() => setProgramOpen(false)}
+              >
+                <span className="program-icon">✍️</span>
                 Creative Writing
-              </NavLink>
-              <NavLink to="/confidence_building_social_skill_enhancement_program" onClick={() => setProgramOpen(false)}>
-                Confidence Building Social Skill
-              </NavLink>
-              <NavLink to="/leadership_program" onClick={() => setProgramOpen(false)}>
+              </a>
+
+              <a
+                href="/confidence_building_social_skill_enhancement_program"
+                onClick={() => setProgramOpen(false)}
+              >
+                <span className="program-icon">💬</span>
+                Confidence Building
+              </a>
+
+              <a
+                href="/leadership_program"
+                onClick={() => setProgramOpen(false)}
+              >
+                <span className="program-icon">👑</span>
                 Leadership Program
-              </NavLink>
-              <NavLink to="/money_skills" onClick={() => setProgramOpen(false)}>
+              </a>
+
+              <a href="/money_skills" onClick={() => setProgramOpen(false)}>
+                <span className="program-icon">💰</span>
                 Money Skills
-              </NavLink>
+              </a>
+
+              {/* Executive INSIDE dropdown */}
+              <a
+                href="/oratrics_executive"
+                className="executive-dropdown"
+                onClick={() => setProgramOpen(false)}
+              >
+                <span className="program-icon">🏢</span>
+                Oratrics Executive
+              </a>
             </div>
           </div>
 
-          <NavLink
-            to="/blog"
-            className={({ isActive }) => (isActive ? activeClassName : "")}
-            onClick={() => setMenuOpen(false)}
+          <a
+            href="/blog"
+            className={isActive("blog")}
+            onClick={() => {
+              setActiveMenu("blog");
+              setMenuOpen(false);
+            }}
           >
             Blog & Stories
-          </NavLink>
+          </a>
 
-          <NavLink
-            to="/careers"
-            className={({ isActive }) => (isActive ? activeClassName : "")}
-            onClick={() => setMenuOpen(false)}
+          <a
+            href="/careers"
+            className={isActive("careers")}
+            onClick={() => {
+              setActiveMenu("careers");
+              setMenuOpen(false);
+            }}
           >
             Careers
-          </NavLink>
+          </a>
 
-          
+          {/* MOBILE ACTIONS */}
           <div className="mobile-actions">
-            <NavLink
-              to="/oratrics_executive"
+            <a
+              href="/franchise"
               className="executive-btn mobile-btn"
               onClick={() => setMenuOpen(false)}
             >
-              Oratrics Executive
-            </NavLink>
+              Franchise
+            </a>
 
             <button
               className="login-btn-red mobile-btn"
               onClick={() => setLoginOpen(!loginOpen)}
             >
-              Login <span className="caret">▾</span>
+              Login ▾
             </button>
 
             {loginOpen && (
               <div className="mobile-login-options">
-                <NavLink to="/login" onClick={() => setLoginOpen(false)}>
+                <a
+                  href="https://oratrics.in/login"
+                  onClick={() => {
+                    setLoginOpen(false);
+                    setMenuOpen(false);
+                  }}
+                >
                   Student Login
-                </NavLink>
+                </a>
               </div>
             )}
           </div>
         </nav>
 
-        
+        {/* DESKTOP ACTIONS */}
         <div className="nav-actions">
-          <NavLink to="/oratrics_executive" className="executive-btn">
-            Oratrics Executive
-          </NavLink>
+          <a href="/franchise" className="executive-btn">
+            Franchise
+          </a>
 
           <div
             ref={loginRef}
@@ -157,21 +208,16 @@ const Navbar = () => {
               className="login-btn-red"
               onClick={() => setLoginOpen(!loginOpen)}
             >
-              Login <span className="caret">▾</span>
+              Login ▾
             </button>
 
             <div className="dropdown-menu">
-              <NavLink
-                to="https://oratrics.in/login"
-                className={({ isActive }) => (isActive ? activeClassName : "")}
-              >
-                Student Login
-              </NavLink>
+              <a href="https://oratrics.in/login">Student Login</a>
             </div>
           </div>
         </div>
 
-        
+        {/* HAMBURGER */}
         <div
           className={`hamburger ${menuOpen ? "active" : ""}`}
           onClick={() => {
@@ -180,13 +226,10 @@ const Navbar = () => {
             setLoginOpen(false);
           }}
         >
-
-          
           <span></span>
           <span></span>
           <span></span>
         </div>
-
       </div>
     </header>
   );
