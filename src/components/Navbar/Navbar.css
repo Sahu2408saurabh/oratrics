@@ -5,7 +5,7 @@
   font-family: "Segoe UI", sans-serif;
 }
 
-/* NAVBAR */
+
 .navbar {
   position: fixed;
   top: 0;
@@ -28,7 +28,7 @@
   height: 42px;
 }
 
-/* LINKS */
+
 .nav-links {
   display: flex;
   align-items: center;
@@ -55,7 +55,7 @@
   font-weight: 600;
 }
 
-/* DROPDOWN */
+
 .dropdown {
   position: relative;
 }

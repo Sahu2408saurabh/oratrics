@@ -30,14 +30,15 @@ const Navbar = () => {
   return (
     <header className="navbar">
       <div className="nav-container">
-        {/* LOGO */}
+       
+
         <div className="logo">
           <a href="/" onClick={() => setActiveMenu("home")}>
             <img src="/logo.png" alt="Oratrics Logo" />
           </a>
         </div>
 
-        {/* NAV LINKS */}
+       
         <nav className={`nav-links ${menuOpen ? "open" : ""}`}>
           <a
             href="/"
@@ -61,7 +62,7 @@ const Navbar = () => {
             About Us
           </a>
 
-          {/* PROGRAMS DROPDOWN */}
+         
           <div
             ref={programRef}
             className={`dropdown ${programOpen ? "open" : ""}`}
@@ -127,7 +128,7 @@ const Navbar = () => {
                 Money Skills
               </a>
 
-              {/* Executive INSIDE dropdown */}
+              
               <a
                 href="/oratrics_executive"
                 className="executive-dropdown"
@@ -161,7 +162,7 @@ const Navbar = () => {
             Careers
           </a>
 
-          {/* MOBILE ACTIONS */}
+          
           <div className="mobile-actions">
             <a
               href="/franchise"
@@ -194,7 +195,7 @@ const Navbar = () => {
           </div>
         </nav>
 
-        {/* DESKTOP ACTIONS */}
+        
         <div className="nav-actions">
           <a href="/franchise" className="executive-btn">
             Franchise
@@ -217,7 +218,7 @@ const Navbar = () => {
           </div>
         </div>
 
-        {/* HAMBURGER */}
+        
         <div
           className={`hamburger ${menuOpen ? "active" : ""}`}
           onClick={() => {
