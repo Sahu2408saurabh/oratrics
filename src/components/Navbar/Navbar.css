@@ -98,7 +98,7 @@
   font-size: 18px;
 }
 
-/* EXECUTIVE INSIDE DROPDOWN */
+
 .executive-dropdown {
   color: #0056d2;
   font-weight: 600;
@@ -109,7 +109,8 @@
   color: #003a9b;
 }
 
-/* BUTTONS */
+
+
 .executive-btn {
   background: transparent;
   border: 1.5px solid #050a30;
@@ -142,12 +143,12 @@
   margin-left: 4px;
 }
 
-/* MOBILE */
+
 .mobile-actions {
   display: none;
 }
 
-/* HAMBURGER (RESTORED) */
+
 .hamburger {
   display: none;
   width: 36px;
@@ -189,7 +190,7 @@
   bottom: 12px;
 }
 
-/* RESPONSIVE */
+
 @media (max-width: 992px) {
   .nav-links {
     position: absolute;
@@ -216,14 +217,16 @@
     flex-direction: column;
     gap: 12px;
     width: 100%;
-    margin-top: 10px;
+    margin-top: 20px;
+  
   }
 
   .mobile-btn {
     width: 100%;
     min-height: 48px;
     text-align: center;
-    padding: 12px 0;
+    padding: 15px 0;
+    
   }
 
   .dropdown-menu {
