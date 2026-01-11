@@ -1,5 +1,15 @@
 import { useState, useRef, useEffect } from "react";
-import "./Navbar.css";
+import Image from "next/image";
+import Link from "next/link";
+
+import Confidence from "../../assets/images/Confidence.png";
+import Leadership from "../../assets/images/Leadership.png";
+import Maths from "../../assets/images/Maths.png";
+import Money from "../../assets/images/Money.png";
+import Personality from "../../assets/images/Personality.png";
+import Public from "../../assets/images/Public.png";
+import Writing from "../../assets/images/Writing.png";
+import Exective from "../../assets/images/Exective.png";
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -33,14 +43,19 @@ const Navbar = () => {
        
 
         <div className="logo">
-          <a href="/" onClick={() => setActiveMenu("home")}>
-            <img src="/logo.png" alt="Oratrics Logo" />
-          </a>
+          <Link href="/" onClick={() => setActiveMenu("home")}>
+      <Image
+  src="/assets/oratricslogo.webp"
+  alt="Oratrics Logo"
+  width={150}
+  height={42}
+  priority
+/>             </Link>
         </div>
 
        
         <nav className={`nav-links ${menuOpen ? "open" : ""}`}>
-          <a
+          <Link
             href="/"
             className={isActive("home")}
             onClick={() => {
@@ -49,9 +64,9 @@ const Navbar = () => {
             }}
           >
             Home
-          </a>
+          </Link>
 
-          <a
+          <Link
             href="/about_us"
             className={isActive("about_us")}
             onClick={() => {
@@ -60,7 +75,7 @@ const Navbar = () => {
             }}
           >
             About Us
-          </a>
+          </Link>
 
          
           <div
@@ -78,69 +93,119 @@ const Navbar = () => {
             </span>
 
             <div className="dropdown-menu programs-dropdown">
-              <a href="/math" onClick={() => setProgramOpen(false)}>
-                <span className="program-icon">📐</span>
+              <Link href="/math" onClick={() => setProgramOpen(false)}>
+                <span className="program-icon">
+                                       <img
+                    src="/images/Maths.png"
+                    alt="Math Icon"
+                    className="math-icon "
+                  />
+                </span>
                 Oratrics Math Explorers
-              </a>
+              </Link>
 
-              <a
+              <Link
                 href="/personality_enrichment"
                 onClick={() => setProgramOpen(false)}
               >
-                <span className="program-icon">🧠</span>
+                <span className="program-icon">
+                  <img
+                    src="/images/Personality.png"
+                    alt="Personality"
+                   
+                    className="math-icon "
+                  />
+                </span>
                 Personality Enrichment
-              </a>
+              </Link>
 
-              <a
+              <Link
                 href="/public_speaking"
                 onClick={() => setProgramOpen(false)}
               >
-                <span className="program-icon">🎤</span>
+                <span className="program-icon">
+                  <img
+                    src="/images/Public.png"
+                    alt="Public"
+                    className="math-icon "
+                  />
+                </span>
                 Public Speaking
-              </a>
+              </Link>
 
-              <a
+              <Link
                 href="/creative_writing"
                 onClick={() => setProgramOpen(false)}
               >
-                <span className="program-icon">✍️</span>
+                <span className="program-icon">
+                  <img
+                    src="/images/Writing.png"
+                    alt="Writing"
+                    className="math-icon "
+                  />
+                </span>
                 Creative Writing
-              </a>
+              </Link>
 
-              <a
+              <Link
                 href="/confidence_building_social_skill_enhancement_program"
                 onClick={() => setProgramOpen(false)}
               >
-                <span className="program-icon">💬</span>
+                <span className="program-icon">
+                  <img
+                    src="/images/Confidence.png"
+                    alt="Confidence"
+                    className="math-icon "
+                  />
+                </span>
                 Confidence Building
-              </a>
+              </Link>
 
-              <a
+              <Link
                 href="/leadership_program"
                 onClick={() => setProgramOpen(false)}
               >
-                <span className="program-icon">👑</span>
+                <span className="program-icon">
+                  <img
+                    src="/images/Leadership.png"
+                    alt="Leadership"
+                    className="math-icon "
+                  />
+                </span>
                 Leadership Program
-              </a>
+              </Link>
 
-              <a href="/money_skills" onClick={() => setProgramOpen(false)}>
-                <span className="program-icon">💰</span>
+              <Link href="/money_skills" onClick={() => setProgramOpen(false)}>
+                <span className="program-icon">
+                  <img
+                    src="/images/Money.png"
+                    alt="Money"
+                    className="math-icon "
+                  />
+                </span>
                 Money Skills
-              </a>
+              </Link>
 
               
-              <a
+              <Link
                 href="/oratrics_executive"
                 className="executive-dropdown"
                 onClick={() => setProgramOpen(false)}
               >
-                <span className="program-icon">🏢</span>
+                <span className="program-icon">
+                   <img
+                    src="/images/Exective.png"
+                    style={{}}
+                    alt="Exective"
+                    className="math-icon "
+                  />
+                </span>
                 Oratrics Executive
-              </a>
+              </Link>
             </div>
           </div>
 
-          <a
+          <Link
             href="/blog"
             className={isActive("blog")}
             onClick={() => {
@@ -149,9 +214,9 @@ const Navbar = () => {
             }}
           >
             Blog & Stories
-          </a>
+          </Link>
 
-          <a
+          <Link
             href="/careers"
             className={isActive("careers")}
             onClick={() => {
@@ -160,17 +225,17 @@ const Navbar = () => {
             }}
           >
             Careers
-          </a>
+          </Link>
 
           
           <div className="mobile-actions">
-            <a
+            <Link
               href="/franchise"
               className="executive-btn mobile-btn"
               onClick={() => setMenuOpen(false)}
             >
               Franchise
-            </a>
+            </Link>
 
             <button
               className="login-btn-red mobile-btn"
@@ -181,7 +246,7 @@ const Navbar = () => {
 
             {loginOpen && (
               <div className="mobile-login-options">
-                <a
+                <Link
                   href="https://oratrics.in/login"
                   onClick={() => {
                     setLoginOpen(false);
@@ -189,7 +254,7 @@ const Navbar = () => {
                   }}
                 >
                   Student Login
-                </a>
+                </Link>
               </div>
             )}
           </div>
@@ -197,9 +262,9 @@ const Navbar = () => {
 
         
         <div className="nav-actions">
-          <a href="/franchise" className="executive-btn">
+          <Link href="/franchise" className="executive-btn">
             Franchise
-          </a>
+          </Link>
 
           <div
             ref={loginRef}
@@ -213,7 +278,7 @@ const Navbar = () => {
             </button>
 
             <div className="dropdown-menu">
-              <a href="https://oratrics.in/login">Student Login</a>
+              <Link href="https://oratrics.in/login">Student Login</Link>
             </div>
           </div>
         </div>
